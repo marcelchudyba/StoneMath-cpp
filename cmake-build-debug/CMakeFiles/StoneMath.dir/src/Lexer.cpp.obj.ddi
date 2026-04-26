@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "CMakeFiles\\StoneMath.dir\\src\\Lexer.cpp.obj",
+            "outputs": [
+                "C:\\Projects\\StoneMath\\cmake-build-debug\\vc140.pdb",
+                "CMakeFiles\\StoneMath.dir\\src\\Lexer.cpp.obj.ddi"
+            ],
+            "requires": []
+        }
+    ]
+}

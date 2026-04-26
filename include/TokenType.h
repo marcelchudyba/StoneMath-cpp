@@ -9,13 +9,16 @@ namespace StoneMath {
 
     enum class TokenType {
         Number,
-        Plus,
-        Minus,
-        Multiply,
-        Divide,
+        Equals,   // =
+        Plus,     // +
+        Minus,    // -
+        Multiply, // *
+        Divide,   // /
+        Power,    // ^
         LParen,   // (
         RParen,   // )
         Variable, // x, y
+        Function, // sin, cos, sqrt
         EOF_Type  // Koniec stringa
     };
 

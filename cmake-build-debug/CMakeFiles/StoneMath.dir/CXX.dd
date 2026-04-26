@@ -1,0 +1,11 @@
+ninja_dyndep_version = 1.0
+build CMakeFiles\StoneMath.dir\main.cpp.obj: dyndep
+
+build CMakeFiles\StoneMath.dir\src\Lexer.cpp.obj: dyndep
+
+build CMakeFiles\StoneMath.dir\src\Parser.cpp.obj: dyndep
+
+build CMakeFiles\StoneMath.dir\src\Evaluator.cpp.obj: dyndep
+
+build CMakeFiles\StoneMath.dir\src\StoneMath.cpp.obj: dyndep
+
