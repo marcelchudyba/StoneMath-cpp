@@ -53,9 +53,6 @@ std::vector<StoneMath::Token> StoneMath::Lexer::Tokenize() {
         else if(currentChar == '^') {
             tokenized_vector.push_back(Token{TokenType::Power,"^"});
         }
-        else if(currentChar == '=') {
-            tokenized_vector.push_back(Token{TokenType::Equals,"="});
-        }
         else if(currentChar == '(') {
             InjectMultiplyIfNeeded();
             tokenized_vector.push_back(Token{TokenType::LParen,"("});
@@ -100,4 +97,4 @@ std::vector<StoneMath::Token> StoneMath::Lexer::Tokenize() {
 
     return tokenized_vector;
 
-}
+};

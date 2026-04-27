@@ -9,7 +9,6 @@ namespace StoneMath {
 
     enum class TokenType {
         Number,
-        Equals,   // =
         Plus,     // +
         Minus,    // -
         Multiply, // *
