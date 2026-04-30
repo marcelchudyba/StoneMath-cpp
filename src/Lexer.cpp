@@ -27,6 +27,7 @@ std::vector<StoneMath::Token> StoneMath::Lexer::Tokenize() {
         }
     };
 
+
     //main loop loops around the input expresion
     for(int i = 0; i < text.length(); i++) {
         currentChar = text[i];
@@ -79,7 +80,7 @@ std::vector<StoneMath::Token> StoneMath::Lexer::Tokenize() {
             }
             i--;
             InjectMultiplyIfNeeded();
-            if(accumulator == "sin" || accumulator == "cos" || accumulator == "tan" || accumulator == "tg" || accumulator == "sqrt") {
+            if(accumulator == "sin" || accumulator == "cos" || accumulator == "tan" || accumulator == "tg" || accumulator == "ctg" || accumulator == "sqrt") {
 
                 tokenized_vector.push_back(Token{TokenType::Function,accumulator});
             }
@@ -88,10 +89,16 @@ std::vector<StoneMath::Token> StoneMath::Lexer::Tokenize() {
             }
         }
         else {
-            tokenized_vector.push_back(Token{TokenType::Error,std::string(1, currentChar)});
-            return tokenized_vector;
+            throw std::invalid_argument(std::string("Undefined character: ") + currentChar);
+            // tokenized_vector.push_back(Token{TokenType::Error,std::string(1, currentChar)});
+            // return tokenized_vector;
         }
     }
+
+    if(tokenized_vector.empty()) {
+        throw std::invalid_argument("Empty input");
+    }
+
     tokenized_vector.push_back(Token{TokenType::EOF_Type,""});
 
     return tokenized_vector;

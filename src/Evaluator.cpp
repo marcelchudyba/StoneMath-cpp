@@ -1,8 +1,6 @@
 #include "Evaluator.h"
 
 #include <regex>
-
-
 StoneMath::Evaluator::Evaluator(std::vector<Token>& tokens) {
     this->rpn_tokens = tokens;
 }
@@ -11,10 +9,9 @@ double StoneMath::Evaluator::Operation_Type(TokenType type, const double& left,c
         case TokenType::Multiply:
             return left*right;
         case TokenType::Divide:
-
-            // if(right == 0) {
-                //in the future
-                    // }
+         if(right == 0) {
+             throw std::runtime_error("Mathematical Error: Dividing by zero!");
+         }
                         return left/right;
         case TokenType::Minus:
             return left-right;
@@ -36,6 +33,9 @@ double StoneMath::Evaluator::Function_Type(std::string function_name,  const dou
     if (function_name == "tan" || function_name == "tg") {
         return std::tan(top);
     }
+    if(function_name == "ctg") {
+        return 1/std::tan(top);
+    }
     if (function_name == "sqrt") {
         return std::sqrt(top);
     }
@@ -48,6 +48,9 @@ double StoneMath::Evaluator::Evaluate(const double& x) {
         if(rpn_tokens[i].type == TokenType::Variable) {
             if(rpn_tokens[i].value == "x") {
                 numbers_stack.push(x);
+            }
+            else {
+                throw std::runtime_error("Mathematical Error: Variable does not exist!");
             }
         }
         else if(rpn_tokens[i].type == TokenType::Function) {
