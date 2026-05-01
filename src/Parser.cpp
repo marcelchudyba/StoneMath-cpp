@@ -1,4 +1,6 @@
 #include "../include/Parser.h"
+
+#include <stdexcept>
 #include <vector>
 
 StoneMath::Parser::Parser(const std::vector<Token>& tokens) : input_tokens(tokens) {};
@@ -20,6 +22,8 @@ int StoneMath::Parser::GetPrecedence(TokenType type) {
 std::vector<StoneMath::Token> StoneMath::Parser::Parse() {
 
     int i = 0;
+    Token previous_token = input_tokens[i];
+
     for (auto token: input_tokens) {
         if(token.type == TokenType::Number || token.type == TokenType::Variable) {
             output_queue.push_back(token);
@@ -40,7 +44,6 @@ std::vector<StoneMath::Token> StoneMath::Parser::Parse() {
                     output_queue.push_back(top_stack);
                 }
                 operator_stack.pop();
-
                 //we are checking if its a function before parens if it its we throw it to the queue
                 if(!operator_stack.empty() && operator_stack.top().type == TokenType::Function) {
                     Token top_stack = operator_stack.top();
@@ -55,9 +58,19 @@ std::vector<StoneMath::Token> StoneMath::Parser::Parse() {
         else {
 
             //this is for the negative numbers in the start of eqaution
-            if(i == 0 && token.type == TokenType::Minus ) {
+            bool prev_condition = (previous_token.type == TokenType::Minus || previous_token.type == TokenType::Plus || previous_token.type == TokenType::Divide || previous_token.type == TokenType::Multiply);
+            if(i == 0 && token.type != TokenType::Minus ) {
+                throw std::invalid_argument("Parser Error: Eqauation cannot start with this operator.");
+            }
+            if(i == 0){
                 output_queue.push_back(Token{TokenType::Number, "0"});
             }
+            if(i > 0  && prev_condition) {
+                throw std::invalid_argument("Parser Error: Operators cannot be next to each other");
+
+            }
+            //TODO if user write only "-" it throws out an error
+
 
             //this is for a negative number we are only accepting those in betweeen brackets
             if(!operator_stack.empty() && operator_stack.top().type == TokenType::LParen && token.type == TokenType::Minus) {
@@ -76,6 +89,7 @@ std::vector<StoneMath::Token> StoneMath::Parser::Parse() {
             operator_stack.push(token);
             }
         }
+        previous_token = token;
         i++;
     }
     return output_queue;
