@@ -114,7 +114,6 @@ std::vector<StoneMath::Token> StoneMath::Parser::Parse() {
 
             //there are going operators
 
-
             if(!operator_stack.empty() && GetPrecedence(operator_stack.top().type) >= GetPrecedence(token.type)) {
                 Token top = operator_stack.top();
                 operator_stack.pop();
@@ -122,13 +121,12 @@ std::vector<StoneMath::Token> StoneMath::Parser::Parse() {
                 operator_stack.push(token);
             }
             else{
-            operator_stack.push(token);
+                operator_stack.push(token);
             }
 
             if(input_tokens[i + 1].type == TokenType::RParen || input_tokens[i + 1].type == TokenType::EOF_Type) {
                 throw std::invalid_argument("Parser Error: Equation cannot end with Operator");
             }
-
         }
         previous_token = token;
         i++;
