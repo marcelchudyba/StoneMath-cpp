@@ -73,7 +73,9 @@ std::vector<StoneMath::Token> StoneMath::Parser::Parse() {
                     operator_stack.pop();
                     output_queue.push_back(top_stack);
                 }
-                operator_stack.pop();
+                if(!operator_stack.empty()) {
+                    operator_stack.pop();
+                }
                 //we are checking if its a function before parens if it its we throw it to the queue
                 if(!operator_stack.empty() && operator_stack.top().type == TokenType::Function) {
                     Token top_stack = operator_stack.top();
