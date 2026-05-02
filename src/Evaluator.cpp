@@ -9,10 +9,8 @@ double StoneMath::Evaluator::Operation_Type(TokenType type, const double& left,c
         case TokenType::Multiply:
             return left*right;
         case TokenType::Divide:
-         if(right == 0) {
-             throw std::runtime_error("Mathematical Error: Dividing by zero!");
-         }
-                        return left/right;
+         if(right == 0) throw std::runtime_error("Mathematical Error: Dividing by zero!");
+            return left/right;
         case TokenType::Minus:
             return left-right;
         case TokenType::Plus:
@@ -37,12 +35,9 @@ double StoneMath::Evaluator::Function_Type(std::string function_name,  const dou
         return 1/std::tan(top);
     }
     if (function_name == "sqrt") {
-        if(top < 0) {
-            throw std::runtime_error("Mathematical Error: Number under the square cannot be negative!");
-        }
+        if(top < 0) throw std::runtime_error("Mathematical Error: Number under the square cannot be negative!");
         return std::sqrt(top);
     }
-
     return 0.0;
 }
 

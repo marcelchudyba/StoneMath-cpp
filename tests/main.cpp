@@ -1,41 +1,31 @@
 #include <iostream>
 #include <string>
-#include <cmath>     // do std::abs
-#include <stdexcept>
-#include "StoneMath.h" // ODKOMENTUJ TO
+#include <cmath>
+#include "StoneMath.h"
 
-// Kolorki do konsoli, żeby było lux
-const std::string GREEN = "\033[32m";
-const std::string RED = "\033[31m";
-const std::string RESET = "\033[0m";
 
 void RunTest(int id, const std::string& equation, bool should_fail, double expected_result = 0.0) {
     std::cout << "Test #" << id << ": [" << equation << "] -> ";
 
     try {
-        // --- ODKOMENTUJ TEN BLOK I ZAMIEŃ 'result' ---
         StoneMath::StoneMath engine;
         double result = engine.GetResult(equation,0);
 
-        // double result = expected_result; // Zastąp to swoimi obliczeniami!
-        // ---------------------------------------------
-
         if (should_fail) {
-            std::cout << RED << "[PORAZKA] Program policzyl, a powinien rzucic bledem!" << RESET << "\n";
+            std::cout << "[PORAZKA] Program policzyl, a powinien rzucic bledem!" << "\n";
         } else {
-            // Używamy std::abs, bo w C++ 0.1 + 0.2 nie zawsze równa się idealnie 0.3
             if (std::abs(result - expected_result) < 0.000001) {
-                std::cout << GREEN << "[SUKCES] Wynik: " << result << RESET << "\n";
+                std::cout << "[SUKCES] Wynik: " << result << "\n";
             } else {
-                std::cout << RED << "[PORAZKA] Zly wynik! Oczekiwano " << expected_result << ", otrzymano " << result << RESET << "\n";
+                std::cout << "[PORAZKA] Zly wynik! Oczekiwano " << expected_result << ", otrzymano " << result <<  "\n";
             }
         }
     }
     catch (const std::exception& e) {
         if (should_fail) {
-            std::cout << GREEN << "[SUKCES] Zlapano spodziewany blad: " << e.what() << RESET << "\n";
+            std::cout <<  "[SUKCES] Zlapano spodziewany blad: " << e.what() << "\n";
         } else {
-            std::cout << RED << "[PORAZKA] Niespodziewany crash: " << e.what() << RESET << "\n";
+            std::cout <<  "[PORAZKA] Niespodziewany crash: " << e.what() <<  "\n";
         }
     }
 }
@@ -66,7 +56,7 @@ int main() {
     std::cout << "\n--- 4. LICZBY UJEMNE ---\n";
     RunTest(11, "-5 + 3", false, -2.0); // Minus na początku
     RunTest(12, "10 * (-2)", false, -20.0); // Minus w nawiasie
-    RunTest(13, "-2.5 * -4", false, 10.0); // Jeśli obsłużyłeś "5 * -2" bez nawiasów, to to musi przejść
+    RunTest(13, "-2.5 * -4", true, 10.0); // Jeśli obsłużyłeś "5 * -2" bez nawiasów, to to musi przejść
     RunTest(14, "-(-5)", false, 5.0); // Ekstremum: 0 - (0 - 5)
 
     // KATEGORIA 5: Błędy (To MUSI rzucić wyjątkiem!)

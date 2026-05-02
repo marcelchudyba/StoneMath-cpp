@@ -96,8 +96,6 @@ std::vector<StoneMath::Token> StoneMath::Lexer::Tokenize() {
         }
         else {
             throw std::invalid_argument(std::string("Lexer Error: Undefined character: ") + currentChar);
-            // tokenized_vector.push_back(Token{TokenType::Error,std::string(1, currentChar)});
-            // return tokenized_vector;
         }
     }
 
