@@ -79,3 +79,15 @@
 151	678	7996223803829785	CMakeFiles/StoneMath.dir/src/Parser.cpp.obj	97083650bd62ec7
 678	780	7996223809087719	StoneMath.lib	68ba886441df2fe5
 780	1000	7996223810107993	StoneMath_Tests.exe	d964ab0d9bb857af
+15	122	7996227091368938	CMakeFiles/StoneMath.dir/src/Parser.cpp.obj.ddi	28a0232f48024789
+3	157	7996227091247912	CMakeFiles/StoneMath.dir/src/Lexer.cpp.obj.ddi	16f38cc9e1e1646e
+158	193	7996227092797189	CMakeFiles/StoneMath.dir/CXX.dd	f290fab3c7860f17
+158	193	7996227092797189	C:/Projects/StoneMath/cmake-build-debug/CMakeFiles/StoneMath.dir/CXXModules.json	f290fab3c7860f17
+158	193	7996227092797189	CMakeFiles/StoneMath.dir/src/Lexer.cpp.obj.modmap	f290fab3c7860f17
+158	193	7996227092797189	CMakeFiles/StoneMath.dir/src/Parser.cpp.obj.modmap	f290fab3c7860f17
+158	193	7996227092797189	CMakeFiles/StoneMath.dir/src/Evaluator.cpp.obj.modmap	f290fab3c7860f17
+158	193	7996227092797189	CMakeFiles/StoneMath.dir/src/StoneMath.cpp.obj.modmap	f290fab3c7860f17
+206	763	7996227093289927	CMakeFiles/StoneMath.dir/src/Parser.cpp.obj	97083650bd62ec7
+195	1542	7996227093172421	CMakeFiles/StoneMath.dir/src/Lexer.cpp.obj	de23b02f05519557
+1542	1647	7996227106646402	StoneMath.lib	68ba886441df2fe5
+1647	1875	7996227107698694	StoneMath_Tests.exe	d964ab0d9bb857af
