@@ -82,7 +82,7 @@ std::vector<StoneMath::Token> StoneMath::Lexer::Tokenize() {
             i--;
             InjectMultiplyIfNeeded();
             if(accumulator == "sin" || accumulator == "cos" || accumulator == "tan" || accumulator == "tg" || accumulator == "ctg" || accumulator == "sqrt") {
-                if(i + 1 < text.length() && text[i+1] != '(') {
+                if((i + 1 < text.length() && text[i+1] != '(') || i + 1 == text.length()) {
                     throw std::invalid_argument("Lexer Error: After a function must be a parenthesis");
                 }
                 tokenized_vector.push_back(Token{TokenType::Function,accumulator});

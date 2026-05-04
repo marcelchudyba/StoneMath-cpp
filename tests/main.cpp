@@ -106,9 +106,10 @@ int main() {
     RunTest(39, "sqrt(-4)", true);  // Square root of a negative number (Evaluator must catch that it's NaN - Not a Number)
     RunTest(40, "2 ^ ", true);      // Truncated exponentiation
 
+    RunTest(43, "10sin", true);
     RunTest(41, "2x + sin ", true);
 
-    RunTest(41, "10sin ", true);
+    RunTest(42, "10sin ", true);
 
 
     std::cout << "\n=== END OF TESTS ===\n";
