@@ -110,6 +110,7 @@ int main() {
     RunTest(41, "2x + sin ", true);
 
     RunTest(42, "10sin ", true);
+    RunTest(43, "(2x + 2)^ + 2", true);
 
 
     std::cout << "\n=== END OF TESTS ===\n";

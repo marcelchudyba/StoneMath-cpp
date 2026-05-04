@@ -92,7 +92,7 @@ std::vector<StoneMath::Token> StoneMath::Parser::Parse() {
                 throw std::invalid_argument("Parser Error: Eqauation cannot start with this operator.");
             }
 
-            bool prev_condition = (previous_token.type == TokenType::Minus || previous_token.type == TokenType::Plus || previous_token.type == TokenType::Divide || previous_token.type == TokenType::Multiply);
+            bool prev_condition = (previous_token.type == TokenType::Minus || previous_token.type == TokenType::Plus || previous_token.type == TokenType::Divide || previous_token.type == TokenType::Multiply || previous_token.type == TokenType::Power);
 
             if(i == 0) {
                 output_queue.push_back(Token{TokenType::Number, "0"});
