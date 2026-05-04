@@ -8,6 +8,7 @@ void RunTest(int id, const std::string& equation, bool should_fail, double expec
 
     try {
         StoneMath::StoneMath engine = StoneMath::StoneMath(equation);
+
         double result = engine.Evaluate(0);
 
         if (should_fail) {
@@ -104,6 +105,11 @@ int main() {
     RunTest(38, "sin()", true);     // Empty function
     RunTest(39, "sqrt(-4)", true);  // Square root of a negative number (Evaluator must catch that it's NaN - Not a Number)
     RunTest(40, "2 ^ ", true);      // Truncated exponentiation
+
+    RunTest(41, "2x + sin ", true);
+
+    RunTest(41, "10sin ", true);
+
 
     std::cout << "\n=== END OF TESTS ===\n";
     return 0;
