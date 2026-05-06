@@ -52,9 +52,13 @@ std::vector<StoneMath::Token> StoneMath::Parser::Parse() {
             operator_stack.push(token);
         }
         else if(token.type == TokenType::Function){
-            if( input_tokens[i+1].type == TokenType::EOF_Type) {
+            if(input_tokens[i+1].type == TokenType::EOF_Type) {
                 throw std::invalid_argument("Parser Error: After a function must be something");
             }
+            if(input_tokens[i+1].type == TokenType::RParen) {
+                throw std::invalid_argument("Parser Error: After a function cannot be only right Parenthesis");
+            }
+
             operator_stack.push(token);
         }
         else if(token.type == TokenType::RParen) {
